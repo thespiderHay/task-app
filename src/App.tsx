@@ -4,6 +4,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Home from "./UI/Home";
 import TaskForm from "./UI/TaskForm";
 import "./App.css";
+import tabNavigation from "./components/tabNavigation/tabNavigation";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/TaskForm" element={<TaskForm />} />
       </Routes>
+      {/*<tabNavigation/>*/}
     </>
   );
 }

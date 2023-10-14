@@ -2,13 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import TaskList from "../components/TaskList/TaskList";
 import TextField from "@mui/material/TextField";
-import { InputAdornment, IconButton} from '@mui/material';
-import ClearIcon from '@mui/icons-material/Clear';
+import { InputAdornment, IconButton } from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
 import { useSelector } from "react-redux";
-import { removeTask, toggleTask, SetTask, SearchTask, resetSearch } from "../reducers/tasks";
+import {
+  removeTask,
+  toggleTask,
+  SetTask,
+  SearchTask,
+  resetSearch,
+} from "../reducers/tasks";
 import type { I_AppState } from "../store";
 import { appSelector, I_AppSelectorState } from "../selectors/appSelector";
 import useStyles from "../Hooks/useStyles";
+import Cards from "../components/Cards/Cards";
 const Home: React.FC = () => {
   const dispatch = useDispatch();
   const { tasks, router } = useSelector<I_AppState, I_AppSelectorState>(
@@ -45,7 +52,7 @@ const Home: React.FC = () => {
                 edge="end"
                 onClick={() => {
                   setSearch("");
-                  dispatch(resetSearch())
+                  dispatch(resetSearch());
                 }}
               >
                 <ClearIcon />
@@ -53,9 +60,14 @@ const Home: React.FC = () => {
             </InputAdornment>
           ),
         }}
-      
       />
-      <TaskList
+      {/*<TaskList
+        tasks={tasks}
+        deleteTask={(item) => dispatch(removeTask(item.id))}
+        toggleTask={(item) => dispatch(toggleTask(item.id))}
+        EditTask={(item) => dispatch(SetTask(item))}
+      />*/}
+      <Cards
         tasks={tasks}
         deleteTask={(item) => dispatch(removeTask(item.id))}
         toggleTask={(item) => dispatch(toggleTask(item.id))}
